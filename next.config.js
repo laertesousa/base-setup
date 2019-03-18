@@ -1,13 +1,13 @@
 const path = require('path');
-const nextBuildId = require('next-build-id');
+// const nextBuildId = require('next-build-id');
 
 const { ANALYZE } = process.env;
 
 module.exports = {
-  generateBuildId: async () => {
-    const fromGit = await nextBuildId({ dir: __dirname });
-    return fromGit.id;
-  },
+  // generateBuildId: async () => {
+  //   const fromGit = await nextBuildId({ dir: __dirname });
+  //   return fromGit.id;
+  // },
   publicRuntimeConfig: {
     env: process.env.NODE_ENV,
     DOMAIN_NAME: process.env.DOMAIN_NAME || 'localhost:3000',

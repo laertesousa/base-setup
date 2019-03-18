@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server/index.js",
     "start": "node server/index.js",
-    "build": "next build && next-build-id",
+    "build": "next build",
     "postinstall": "npm run build"
   },
   "author": "Laerte Sousa Neto",
