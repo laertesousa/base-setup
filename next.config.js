@@ -1,11 +1,12 @@
 const path = require('path');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const nextBuildId = require('next-build-id');
 
 const { ANALYZE } = process.env;
 
 module.exports = {
   generateBuildId: async () => {
-    return 'production';
+    const fromGit = await nextBuildId({ dir: __dirname });
+    return fromGit.id;
   },
   publicRuntimeConfig: {
     env: process.env.NODE_ENV,
@@ -17,6 +18,7 @@ module.exports = {
     config.resolve.alias.views = path.resolve(__dirname, 'views/');
 
     if (ANALYZE) {
+      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
       config.plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'static' }));
     }
 
