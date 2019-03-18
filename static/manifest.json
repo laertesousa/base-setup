@@ -1,0 +1,21 @@
+{
+  "name": "BaseSetup",
+  "short_name": "BaseSetup",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#3367D6",
+  "theme_color": "#3367D6",
+  "description": "Base monolithic web application setup with Node.js",
+  "icons": [
+    {
+      "src": "/static/assets/icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/assets/icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

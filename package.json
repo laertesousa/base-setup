@@ -1,0 +1,26 @@
+{
+  "name": "base-setup",
+  "version": "1.0.0",
+  "description": "Monolithic web application setup with Node.js, MongoDB, Next.js and React",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "node server/index.js",
+    "start": "node server/index.js",
+    "build": "next build",
+    "postinstall": "npm run build"
+  },
+  "author": "Laerte Sousa Neto",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "isomorphic-fetch": "^2.2.1",
+    "joi": "^14.3.1",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.3.13",
+    "next": "^8.0.3",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  }
+}
