@@ -13,8 +13,9 @@ module.exports = {
     DOMAIN_NAME: process.env.DOMAIN_NAME || 'localhost:3000',
   },
   webpack: (config, options) => {
-    config.resolve.alias.views = path.resolve(__dirname, 'views/');
+    config.resolve.alias.components = path.resolve(__dirname, 'components/');
     config.resolve.alias.helpers = path.resolve(__dirname, 'helpers/');
+    config.resolve.alias.views = path.resolve(__dirname, 'views/');
 
     if (ANALYZE) {
       config.plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'static' }));

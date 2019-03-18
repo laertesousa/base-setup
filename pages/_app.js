@@ -6,16 +6,18 @@ import JssProvider from 'react-jss/lib/JssProvider';
 
 import getMuiContext from 'helpers/getMuiContext';
 
+import NavBar from 'components/NavBar';
+
 export default class MyApp extends App {
-  // static async getInitialProps({ Component, router, ctx }) {
-  //   let pageProps = {};
-  //
-  //   if (Component.getInitialProps) {
-  //     pageProps = await Component.getInitialProps(ctx);
-  //   }
-  //
-  //   return { pageProps };
-  // }
+  static async getInitialProps({ Component, router, ctx }) {
+    let pageProps = {};
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
+    return { pageProps };
+  }
 
   constructor() {
     super();
@@ -46,6 +48,7 @@ export default class MyApp extends App {
             theme={this.muiContext.theme}
             sheetsManager={this.muiContext.sheetsManager}
           >
+            <NavBar />
             <Component muiContext={this.muiContext} {...pageProps} />
           </MuiThemeProvider>
         </JssProvider>
