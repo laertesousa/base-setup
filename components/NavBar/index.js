@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 
@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
 
 import SideMenu from './SideMenu';
+import useShowMenu from './useShowMenu';
 
 const styles = ({ breakpoints }) => ({
   toolbar: {
@@ -22,50 +23,36 @@ const styles = ({ breakpoints }) => ({
   },
 });
 
-class NavBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showMenu: false,
-    };
-  }
+function NavBar({ classes }) {
+  const [showMenu, toggle] = useShowMenu(false);
 
-  toggleMenu = () => {
-    console.log('toggle');
-    this.setState({ showMenu: !this.state.showMenu });
-  };
-
-  render() {
-    const { classes } = this.props;
-    const { showMenu } = this.state;
-    return (
-      <React.Fragment>
-        <AppBar>
-          <Toolbar className={classes.toolbar}>
-            <IconButton
-              color="inherit"
-              aria-label="Menu"
-              className={classes.menuButton}
-              onClick={this.toggleMenu}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Link href="/">
-              <Typography variant="h6" color="inherit" style={{ flexGrow: 1, cursor: 'pointer' }}>
-                Basic Setup
-              </Typography>
-            </Link>
-            <Link href="/login">
-              <Button color="inherit">Login</Button>
-            </Link>
-          </Toolbar>
-        </AppBar>
-        <Drawer open={showMenu} onClose={this.toggleMenu}>
-          <SideMenu />
-        </Drawer>
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      <AppBar>
+        <Toolbar className={classes.toolbar}>
+          <IconButton
+            color="inherit"
+            aria-label="Menu"
+            className={classes.menuButton}
+            onClick={toggle}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Link href="/">
+            <Typography variant="h6" color="inherit" style={{ flexGrow: 1, cursor: 'pointer' }}>
+              Basic Setup
+            </Typography>
+          </Link>
+          <Link href="/login">
+            <Button color="inherit">Login</Button>
+          </Link>
+        </Toolbar>
+      </AppBar>
+      <Drawer open={showMenu} onClose={toggle}>
+        <SideMenu onSelection={toggle}/>
+      </Drawer>
+    </React.Fragment>
+  );
 }
 
 NavBar.propTypes = {

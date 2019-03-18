@@ -25,8 +25,8 @@
     "mongoose": "^5.3.13",
     "next": "^8.0.3",
     "prop-types": "^15.7.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
     "react-icons": "^3.5.0",
     "react-jss": "^8.6.1"
   },

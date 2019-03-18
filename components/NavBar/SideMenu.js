@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
-import Router from 'next/router';
 
 import { List, ListItem, ListItemIcon, withStyles, ListItemText, Divider } from '@material-ui/core';
 import { Home, Phone, Work } from '@material-ui/icons';
@@ -17,7 +17,7 @@ const styles = {
   }
 };
 
-const SideMenu = ({ classes }) => {
+const SideMenu = ({ classes, onSelection }) => {
   return (
     <div className={classes.root}>
       <List>
@@ -25,15 +25,13 @@ const SideMenu = ({ classes }) => {
           <ListItemIcon>
             <img height={30} src="/static/assets/icon.png" />
           </ListItemIcon>
-          <Link href="/">
-            <ListItemText primary="Basic Setup" />
-          </Link>
+          <ListItemText primary="Basic Setup" />
         </ListItem>
         <Divider />
-        {links.filter(l => l.href !== Router.router.asPath).map((l) => (
-          <React.Fragment>
+        {links.map((l) => (
+          <React.Fragment key={l.title}>
             <Link href={l.href}>
-              <ListItem button key={l.title}>
+              <ListItem button onClick={() => onSelection ? onSelection() : null}>
                 {l.icon && <ListItemIcon>{l.icon}</ListItemIcon>}
                 <ListItemText primary={l.title} />
               </ListItem>
@@ -44,6 +42,14 @@ const SideMenu = ({ classes }) => {
       </List>
     </div>
   );
+};
+
+SideMenu.propsTypes = {
+  onSelection: PropTypes.func,
+};
+
+SideMenu.defaultProps = {
+  onSelection: null,
 };
 
 export default withStyles(styles)(SideMenu);
