@@ -1,4 +1,7 @@
 import React from 'react';
+import Head from 'next/head';
+
+import HomePageView from 'views/HomePage';
 
 class HomePage extends React.Component {
   static async getInitialProps() { return {}; }
@@ -6,7 +9,10 @@ class HomePage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Home Page</h1>
+        <Head>
+          <title>Home</title>
+        </Head>
+        <HomePageView />
       </React.Fragment>
     )
   }
