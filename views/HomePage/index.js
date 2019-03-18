@@ -9,10 +9,17 @@ const styles = ({ breakpoints }) => ({
     display: 'flex',
     width: '100%',
     maxWidth: breakpoints.width('lg'),
-    minHeight: '80vh',
-    alignItems: 'center',
+    minHeight: 'calc(100vh - 120px)',
     justifyContent: 'center',
     margin: '0 auto',
+    [breakpoints.down('md')]: {
+      flexDirection: 'column',
+    }
+  },
+  innerContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    paddingBottom: 100,
     [breakpoints.down('md')]: {
       flexDirection: 'column',
     }
@@ -35,18 +42,20 @@ const styles = ({ breakpoints }) => ({
 const HomePageView = ({ classes }) => {
   return (
     <div className={classes.root}>
-      <img
-        className={classes.logo}
-        src="/static/assets/icon.png"
-        width={100}
-      />
-      <Typography
-        className={classes.title}
-        variant="h1"
-        align="center"
-      >
-        Home Page
-      </Typography>
+      <div className={classes.innerContainer}>
+        <img
+          className={classes.logo}
+          src="/static/assets/icon.png"
+          width={100}
+        />
+        <Typography
+          className={classes.title}
+          variant="h1"
+          align="center"
+        >
+          Home Page
+        </Typography>
+      </div>
     </div>
   );
 };

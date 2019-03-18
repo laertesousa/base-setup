@@ -24,8 +24,8 @@ class PageDocument extends Document {
             dangerouslySetInnerHTML={{ __html: `
               body {
                   font-family: 'Source Sans Pro', sans-serif;
-                  margin: 0,
-                  padding: 0
+                  margin: 0;
+                  padding: 56px 0 0;
               }
             ` }}
           />

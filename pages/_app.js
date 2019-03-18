@@ -6,6 +6,7 @@ import JssProvider from 'react-jss/lib/JssProvider';
 
 import getMuiContext from 'helpers/getMuiContext';
 
+import Footer from 'components/Footer';
 import NavBar from 'components/NavBar';
 
 export default class MyApp extends App {
@@ -50,6 +51,7 @@ export default class MyApp extends App {
           >
             <NavBar />
             <Component muiContext={this.muiContext} {...pageProps} />
+            <Footer />
           </MuiThemeProvider>
         </JssProvider>
       </Container>
