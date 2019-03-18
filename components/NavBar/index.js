@@ -12,7 +12,7 @@ import SideMenu from './SideMenu';
 
 const styles = ({ breakpoints }) => ({
   toolbar: {
-    width: '100%',
+    width: 'calc(100% - 32px)',
     maxWidth: breakpoints.width('lg'),
     margin: '0 auto',
   },

@@ -2,6 +2,7 @@ require('./models')();
 
 const next = require('next');
 const express = require('express');
+const compression = require('compression');
 const Routes = require('./routes');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
@@ -10,6 +11,7 @@ const nextApp = next({ dev });
 
 nextApp.prepare().then(() => {
   const app = express();
+  app.use(compression());
 
   Routes(app, nextApp);
 
