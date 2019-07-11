@@ -11,6 +11,7 @@ module.exports = {
   publicRuntimeConfig: {
     env: process.env.NODE_ENV,
     DOMAIN_NAME: process.env.DOMAIN_NAME || 'localhost:3000',
+    ANALYTICS_TRACKING_ID: process.env.ANALYTICS_TRACKING_ID,
   },
   webpack: (config, options) => {
     config.resolve.alias.components = path.resolve(__dirname, 'components/');

@@ -1,9 +1,11 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import Head from 'next/head'
+import Head from 'next/head';
+import Router from 'next/router';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import JssProvider from 'react-jss/lib/JssProvider';
 
+import { initGA, logPageView } from 'helpers/analytics';
 import getMuiContext from 'helpers/getMuiContext';
 
 import Footer from 'components/Footer';
@@ -25,7 +27,20 @@ export default class MyApp extends App {
     this.muiContext = getMuiContext();
   }
 
+  componentWillMount() {
+    if (typeof window !== 'undefined') {
+      initGA();
+      logPageView();
+    }
+  }
+
   componentDidMount() {
+    Router.events.on('routeChangeComplete', () => {
+      // Move view to the top on client side routing with Router.push
+      window.scrollTo(0, 0);
+      logPageView();
+    });
+
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles && jssStyles.parentNode) {

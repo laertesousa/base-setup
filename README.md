@@ -10,7 +10,11 @@ DB_USER=[db-username]
 DB_PASSWORD=[db-password]
 DOMAIN_NAME=[full-base-domain] (only set this env variable in production)
 ```
-#Test
+## Analytics
+```
+ANALYTICS_TRACKING_ID=[UA-xxxxxxxx-x]
+```
+
 # Database
 MongoDB is used as our source of truth database.
 ## Getting a fresh copy
