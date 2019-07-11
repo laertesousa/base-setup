@@ -1,7 +1,7 @@
 const usersController = require('../controllers/users');
-const SchemaValidator = require('../middleware/SchemaValidator');
+const schemaValidator = require('../middleware/schemaValidator');
 
-const validateRequest = SchemaValidator(true);
+const validateRequest = schemaValidator(true);
 
 module.exports = async (server) => {
   server.post('/api/users', validateRequest, usersController.post);

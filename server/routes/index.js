@@ -5,6 +5,7 @@ const { join } = require('path');
 const fs = require('fs');
 
 const usersRoutes = require('./users');
+const contactRoutes = require('./contact');
 
 const rootStaticFiles = [
   '/manifest.json',
@@ -19,6 +20,7 @@ module.exports = (express, nextApp) => {
   express.use(cookieParser());
 
   usersRoutes(express);
+  contactRoutes(express);
 
   // Resolves Next.js page routes and assets
   express.get('*', (req, res) => {

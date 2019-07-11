@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const Joi = require('joi');
 const Schemas = require('../schemas');
+const errorMessages = require('../constants/errorMessages');
 
 module.exports = (useJoiError = false) => {
   // useJoiError determines if we should respond with the base Joi error
@@ -19,53 +20,48 @@ module.exports = (useJoiError = false) => {
 
   // return the validation middleware
   return (req, res, next) => {
+    let route = '';
+    // TODO: handle proper case
+    if (req.route.path) {
+      route = req.route.path.replace('/api/', '').replace('-','').toLowerCase();
+    }
 
-    const route = req.route.path;
     const method = req.method.toLowerCase();
 
     if (_.includes(_supportedMethods, method) && _.has(Schemas, route)) {
-
       // get schema for the current route
       const _schema = _.get(Schemas, route);
 
       if (_schema) {
-
         // Validate req.body using the schema and validation options
         return Joi.validate(req.body, _schema, _validationOptions, (err, data) => {
-
           if (err) {
-
             // Joi Error
             const JoiError = {
               status: 'failed',
-              error: {
-                original: err._object,
-
-                // fetch only message and type from each error
-                details: _.map(err.details, ({message, type}) => ({
-                  message: message.replace(/['"]/g, ''),
-                  type
-                }))
-              }
+              // fetch only message and type from each error
+              error: _.reduce(err.details, (acc, { message, context }) => {
+                acc[context.key] = message.replace(/['"]/g, '');
+                return acc;
+              }, {}),
             };
 
             // Custom Error
             const CustomError = {
               status: 'failed',
-              error: 'Invalid request data. Please review request and try again.'
+              error: {
+                general: errorMessages.GENERAL
+              },
             };
 
             // Send back the JSON error response
             res.status(400).json(_useJoiError ? JoiError : CustomError);
-
           } else {
             // Replace req.body with the data after Joi validation
             req.body = data;
             next();
           }
-
         });
-
       }
     }
 

@@ -15,6 +15,12 @@ DOMAIN_NAME=[full-base-domain] (only set this env variable in production)
 ANALYTICS_TRACKING_ID=[UA-xxxxxxxx-x]
 ```
 
+## Send Grid (Contact Emails)
+```
+CONTACT_EMAIL=[email to receive contact messages sent from contact page]
+SENDGRID_API_KEY=[API_ACCESS_KEY]
+```
+
 # Database
 MongoDB is used as our source of truth database.
 ## Getting a fresh copy

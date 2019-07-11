@@ -25,7 +25,7 @@ class PageDocument extends Document {
               body {
                   font-family: 'Source Sans Pro', sans-serif;
                   margin: 0;
-                  padding: 56px 0 0;
+                  padding: 80px 0 0;
               }
             ` }}
           />

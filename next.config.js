@@ -14,8 +14,10 @@ module.exports = {
     ANALYTICS_TRACKING_ID: process.env.ANALYTICS_TRACKING_ID,
   },
   webpack: (config, options) => {
+    config.resolve.alias.apis = path.resolve(__dirname, 'apis/');
     config.resolve.alias.components = path.resolve(__dirname, 'components/');
     config.resolve.alias.helpers = path.resolve(__dirname, 'helpers/');
+    config.resolve.alias.styles = path.resolve(__dirname, 'styles/');
     config.resolve.alias.views = path.resolve(__dirname, 'views/');
 
     if (ANALYZE) {
