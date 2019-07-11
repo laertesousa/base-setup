@@ -12,3 +12,6 @@ make clean:
 
 restore:
 	mongorestore -d pwa ./db-backup
+
+analyze-bundles:
+	ANALYZE=1 npm run build

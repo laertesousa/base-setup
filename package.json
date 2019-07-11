@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "node server/index.js",
     "start": "node server/index.js",
-    "build": "next build",
-    "postinstall": "npm run build"
+    "build": "next build"
   },
   "author": "Laerte Sousa Neto",
   "license": "ISC",
@@ -32,6 +31,6 @@
   },
   "devDependencies": {
     "next-build-id": "^2.0.1",
-    "webpack-bundle-analyzer": "^3.1.0"
+    "webpack-bundle-analyzer": "^3.3.2"
   }
 }
