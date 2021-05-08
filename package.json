@@ -21,7 +21,7 @@
     "isomorphic-fetch": "^2.2.1",
     "joi": "^14.3.1",
     "jss": "^9.8.7",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.21",
     "mongoose": "^5.3.13",
     "next": "^8.0.3",
     "prop-types": "^15.7.2",
